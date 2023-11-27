@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title>[[#{bibliotecarios.edit.headline}]]</title>
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 class="flex-grow-1">[[#{bibliotecarios.edit.headline}]]</h1>
+                <div>
+                    <a th:href="@{/bibliotecarioss}" class="btn btn-secondary">[[#{bibliotecarios.edit.back}]]</a>
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('bibliotecarios')}" />
+            <form th:action="${requestUri}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='bibliotecarios', field='id', disabled=true, type='number')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bibliotecarios', field='nombre')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bibliotecarios', field='apellido')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bibliotecarios', field='gmail')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='bibliotecarios', field='password')}" />
+                <input type="submit" th:value="#{bibliotecarios.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>
